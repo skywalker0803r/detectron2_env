@@ -1,0 +1,6 @@
+# 忽略 workspace/data 資料夾
+workspace/data/
+
+# 忽略所有叫做 "隔離" 的資料夾或檔案
+隔離
+**/隔離
