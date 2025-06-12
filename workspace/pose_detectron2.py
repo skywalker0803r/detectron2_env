@@ -13,7 +13,7 @@ from detectron2.utils.visualizer import Visualizer, ColorMode
 from detectron2.data import MetadataCatalog
 
 
-def run_detectron2(video_path, output_dir, device):
+def run_detectron2(video_path, output_dir, device,save_img=False):
     """
     使用 Detectron2 對影片執行骨架偵測，並輸出 keypoints .npy 與繪圖圖片。
     - video_path: 輸入影片路徑
@@ -134,13 +134,17 @@ def run_detectron2(video_path, output_dir, device):
                 kp_full[0],
             )
 
-        cv2.imwrite(
-            os.path.join(output_dir, f"frame_{frame_idx:05d}_annotated.jpg"),
-            display_frame,
-        )
+        if save_img == True:
+            cv2.imwrite(
+                os.path.join(output_dir, f"frame_{frame_idx:05d}_annotated.jpg"),
+                display_frame,
+            )
 
     cap.release()
-    print("✅ Detectron2 處理完畢，骨架資料與圖片已儲存。")
+    if save_img == True:
+        print("✅ Detectron2 處理完畢，骨架資料與圖片已儲存。")
+    else:
+        print("✅ Detectron2 處理完畢，骨架資料已儲存。")
 
 
 # ✅ 可獨立執行測試
