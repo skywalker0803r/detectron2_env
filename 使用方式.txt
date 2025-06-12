@@ -1,0 +1,5 @@
+# 建立並啟動容器
+docker-compose up --build
+
+# 瀏覽器打開 Jupyter
+http://localhost:8888/?token=detectron2
